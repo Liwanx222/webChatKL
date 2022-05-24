@@ -2,12 +2,10 @@ let fs = require('fs');
 let express = require("express");
 
 const app = express();
+app.set('view engine', 'ejs'); 
 
-app.get("/", function (req, res) {
-	res.writeHead(200, {"Content-Type": "text/html"});
-	fs.readFile("../index.html", (err, data)=>{
-		res.end(data);
-	});
+app.get("/", (req, res)=> {
+	res.render("pages/index")
 });
 
 app.get("/hello/:name", function (req, res) {
