@@ -13,4 +13,8 @@ app.get("/hello/:name", function (req, res) {
 	res.end(JSON.stringify({message: "Hello" + req.params.name + "!"}));
 });
 
+app.get("/express01", (req, res) => {
+	res.render("pages/express01")
+});
+
 app.listen(8080);
