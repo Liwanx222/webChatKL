@@ -5,7 +5,7 @@ const app = express();
 app.set('view engine', 'ejs'); 
 
 app.get("/", (req, res)=> {
-	res.render("pages/index")
+	res.render("index.ejs");
 });
 
 app.get("/hello/:name", function (req, res) {
@@ -17,4 +17,4 @@ app.get("/express01", (req, res) => {
 	res.render("pages/express01")
 });
 
-app.listen(8080);
+app.listen(3000);
