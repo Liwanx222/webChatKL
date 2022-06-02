@@ -3,8 +3,8 @@
 ============== */
 
 function setupLocalStorage(){
-    sessionStorage.setItem('messages',[]);
-    console.log('storing.');
+    let obj = {'messages':[]}
+    sessionStorage.setItem('messages',JSON.stringify(obj));
 }
 
 function setupListeners(){
@@ -12,7 +12,8 @@ function setupListeners(){
     let input_text_elt = document.querySelector('.input-post')
     input_submit_elt.addEventListener('click',()=>{
         updateSessionStorage(input_text_elt)
-        clearPostContent(input_text_elt);
+        clearPostContent(input_text_elt);   
+         
     })
 }
 
@@ -21,9 +22,12 @@ function setupListeners(){
 
 function updateSessionStorage(elt){
     let text = elt.value;
-    let obj = sessionStorage.getItem('messages');
-    console.log(obj);
-    obj.push(text)
+    let obj_raw = sessionStorage.getItem('messages');
+    let obj = JSON.parse(obj_raw);
+
+    obj['messages'].push(text)
+    obj = JSON.stringify(obj)
+
     sessionStorage.setItem('post',obj);
 }
 
