@@ -3,6 +3,7 @@ let express = require("express");
 let path = require('path');
 let body_parser = require('body-parser');
 let db = require('./js/database');
+let db_json = './json/database.json';
 
 let mess_handler = require('./js/messagesHandler');
 
@@ -32,12 +33,15 @@ app.get("/express01", (req, res) => {
 });
 
 app.get("/send",(req,res)=>{
-	fs.readFile(db,'utf-8', async(err, data) => {
-	fs.readFile(db,'utf-8',async(err,data)=>{
+	res.render('index.ejs');
+	fs.readFile(db_json,'utf-8',async(err,data)=>{
 		let object_db = JSON.parse(data);
-		object['messages'].push(message);
-		db.fillDB(sessionStorage['messages'],object_db);
-	})
+		let item = sessionStorage.getItem('messages');
+		console.log(item);
+		let session_db = JSON.parse(item);
+		db.fillDB(session_db['messages'],object_db);
+		console.log(object_db);
+	});
 })
 
 app.listen(3000);
