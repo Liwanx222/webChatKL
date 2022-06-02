@@ -1,8 +1,15 @@
 let fs = require('fs');
 let express = require("express");
+let path = require('path');
+let body_parser = require('body-parser');
+let db = require('./js/database');
 
 const app = express();
 app.set('view engine', 'ejs'); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname));
+app.use(body_parser.urlencoded({extended:false}));
 
 app.get("/", (req, res)=> {
 	res.render("index.ejs");
@@ -16,5 +23,13 @@ app.get("/hello/:name", function (req, res) {
 app.get("/express01", (req, res) => {
 	res.render("pages/express01")
 });
+
+app.get("/send",(req,res)=>{
+	fs.readFile(db,'utf-8',async(err,data)=>{
+		let object_db = JSON.parse(data);
+		object['messages'].push(message);
+		db.fillDB(sessionStorage['messages'],object_db);
+	})
+})
 
 app.listen(3000);
