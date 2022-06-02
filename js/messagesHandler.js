@@ -9,7 +9,7 @@ function getElt(elt) {
     return preview_elt;
 }
 
-// Displays all messages from database.
+// Displays all messages from the fucking database.
 function displayMessages(db) {
     let messages_array = getMessages(db);
     let preview_elt = getElt('.posts__preview');

@@ -17,6 +17,7 @@ app.get("/", (req, res)=> {
 	fs.readFile(db, 'utf-8', async(err, data) => {
 		let object_db = JSON.parse(data);
 	})
+	// FUCK.
 	mess_handler.displayMessages(object_db);
 });
 
