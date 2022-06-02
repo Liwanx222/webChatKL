@@ -3,6 +3,7 @@ let express = require("express");
 let path = require('path');
 let body_parser = require('body-parser');
 let db = require('./js/database');
+
 let mess_handler = require('./js/messagesHandler');
 
 const app = express();
@@ -32,6 +33,7 @@ app.get("/express01", (req, res) => {
 
 app.get("/send",(req,res)=>{
 	fs.readFile(db,'utf-8', async(err, data) => {
+	fs.readFile(db,'utf-8',async(err,data)=>{
 		let object_db = JSON.parse(data);
 		object['messages'].push(message);
 		db.fillDB(sessionStorage['messages'],object_db);
