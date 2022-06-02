@@ -14,8 +14,10 @@
     <section class="forum">
         <div class="input">
             <h3 class="input__title">Ecrivez votre post</h3>
-            <input type="text" class="input-post">
-            <input type="submit" class="input-submit">
+            <form action="/send" type="get">
+                <input type="text" class="input-post">
+                <input type="submit" class="input-submit" href="">
+            </form>
         </div>
     </section>
     <header>
@@ -23,5 +25,7 @@
         <script src="../js/inputHandling.js" type="module"></script>
         <script src="../js/messagesHandler.js" type="module"></script>
     </header>
+    <script src="../js/inputHandling.js" type="module"></script>
+    <script src="../js/database.js" type="module"></script>
 </body>
 </html>
