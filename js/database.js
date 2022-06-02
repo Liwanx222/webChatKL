@@ -1,4 +1,6 @@
 
+db = require('../json/database.json')
+
 function addPostToDatabase(){
     let db_object = JSON.parse(db);
     db_object['post'].push();
