@@ -2,9 +2,10 @@
 /* Setup.
 ============== */
 
+
+
 function setupLocalStorage(){
-    let obj = {'messages':[]}
-    sessionStorage.setItem('messages',JSON.stringify(obj));
+    sessionStorage.setItem('messages','a');
 }
 
 function setupListeners(){
@@ -13,8 +14,15 @@ function setupListeners(){
     input_submit_elt.addEventListener('click',()=>{
         updateSessionStorage(input_text_elt)
         clearPostContent(input_text_elt);   
-         
     })
+}
+
+export function addMessage(db){
+    let message = sessionStorage.getItem('messages');
+    if (message != ''){
+        db.append(message);
+        sessionStorage.setItem('messages','');
+    }
 }
 
 /* Storage.
@@ -22,21 +30,17 @@ function setupListeners(){
 
 function updateSessionStorage(elt){
     let text = elt.value;
-    let obj_raw = sessionStorage.getItem('messages');
-    let obj = JSON.parse(obj_raw);
-
-    obj['messages'].push(text)
-    obj = JSON.stringify(obj)
-
-    sessionStorage.setItem('post',obj);
+    if(!(sessionStorage.getItem('messages'))){
+        sessionStorage.setItem('messages',String(text));
+    }
 }
 
 /* Handles messages.
 =============== */
 
 function createNewMessageElt(text){
-    let div = document.createElement('div')
-    div.classList.add('message')
+    let div = document.createElement('div');
+    div.classList.add('message');
     div.innerHTML = text;
 }
 

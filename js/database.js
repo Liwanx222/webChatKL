@@ -9,7 +9,10 @@ function addPostToDatabase(){
 
 function fillDB(messages,db){
     for(let msg in messages){
-        db['messages'].push(msg);
+        db.push(msg);
     }
-    sessionStorage.setItem['messages'] = [];
+}
+
+function blank(){
+    console.log('hell')
 }
