@@ -1,12 +1,11 @@
 
-function addPostToDatabase(){
-    let db_object = JSON.parse(db);
-    db_object['post'].push();
-    console.log(sessionStorage['post'])
-}
+module.exports = {
+    updateDatabase
+};
 
-function fillDB(messages,db){
-    for(let msg in messages){
-        db.push(msg);
-    }
+function updateDatabase(data,post){
+    let db = JSON.parse(data);
+    db['messages'].push(post);
+    db = JSON.stringify(db);
+    return db
 }

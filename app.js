@@ -2,13 +2,12 @@
 /* Imports
 =============== */
 
-let fs = require('fs');
 let express = require("express");
-let path = require('path');
+let fs = require('fs');
 let body_parser = require('body-parser');
-let req = require('express/lib/request');
+let database = require('./js/database');
 
-/* App Parsers 
+/* Parsers 
 =============== */
 
 const app = express();
@@ -25,17 +24,13 @@ app.get("/", (req, res)=> {
 });
 
 app.post('/send',(req,res)=>{
-	let post = req.body.text;
 	fs.readFile('./json/database.json',async(err,data)=>{
-		if(err) throw err;
-		let db = JSON.parse(data);
-		db['messages'].push(post);
-		db = JSON.stringify(db);
-		fs.writeFile('./json/database.json',db,err=>{
+		if (err){
+			throw err;
+		}
+		fs.writeFile('./json/database.json',database.updateDatabase(data,req.body.text),err=>{
 			if (err) throw err;
-			console.log('file written');
 		})
-
 		res.redirect('/');
 	})
 });
