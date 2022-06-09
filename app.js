@@ -6,18 +6,15 @@ let fs = require('fs');
 let express = require("express");
 let path = require('path');
 let body_parser = require('body-parser');
-const req = require('express/lib/request');
-let input_handling = require('.js/')
-let db_json = './json/database.json';
+let req = require('express/lib/request');
 
 /* App Parsers 
 =============== */
 
 const app = express();
 app.set('view engine', 'ejs'); 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
+app.use(express.json());
 app.use(body_parser.urlencoded({extended:false}));
 
 /* Main
@@ -27,17 +24,19 @@ app.get("/", (req, res)=> {
 	res.render("index.ejs");
 });
 
-app.get("/hello/:name", function (req, res) {
-	res.writeHead(200, {"Content-Type": "application/json"});
-	res.end(JSON.stringify({message: "Hello" + req.params.name + "!"}));
-});
+app.post('/send',(req,res)=>{
+	let post = req.body.text;
+	fs.readFile('./json/database.json',async(err,data)=>{
+		if(err) throw err;
+		let db = JSON.parse(data);
+		db['messages'].push(post);
+		db = JSON.stringify(db);
+		fs.writeFile('./json/database.json',db,err=>{
+			if (err) throw err;
+			console.log('file written');
+		})
 
-app.get('/send',(req,res)=>{
-	console.log('hello');
-	res.redirect('/');
-	fs.readFile('./json/database.json','utf-8',async(err,data)=>{
-		let db = JSON.parse(data)['messages'];
-		addMessage
+		res.redirect('/');
 	})
 });
 

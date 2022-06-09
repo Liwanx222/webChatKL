@@ -2,8 +2,6 @@
 /* Setup.
 ============== */
 
-
-
 function setupLocalStorage(){
     sessionStorage.setItem('messages','a');
 }
@@ -17,7 +15,7 @@ function setupListeners(){
     })
 }
 
-export function addMessage(db){
+function addMessageDB(db){
     let message = sessionStorage.getItem('messages');
     if (message != ''){
         db.append(message);

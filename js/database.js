@@ -10,7 +10,3 @@ function fillDB(messages,db){
         db.push(msg);
     }
 }
-
-function blank(){
-    console.log('hell')
-}
