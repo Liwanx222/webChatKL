@@ -2,8 +2,9 @@
 function setupListeners(){
     let post_input = document.querySelector('.form__post-input');
     post_input.addEventListener('keypress',(e)=>{
-        if(e.key=='enter')
-        getMessages();
+        if(e.key=='enter'){
+            getMessages();
+        }
     })
 }
 

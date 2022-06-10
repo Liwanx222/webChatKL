@@ -1,4 +1,7 @@
 
+module.exports = {
+    updateDatabase
+}
 
 function updateDatabase(data,post){
     let db = JSON.parse(data);
