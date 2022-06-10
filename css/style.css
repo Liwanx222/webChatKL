@@ -1,0 +1,32 @@
+
+
+/* General class
+=============== */
+
+.container {
+    max-width:1250px;
+    margin:0 auto;
+}
+
+/* HEADER
+=============== */
+
+.header {
+    padding:4rem 2rem;
+}
+
+.header__desc {
+    padding-top:0.5rem;
+    max-width:550px;
+}
+
+/* Form
+=============== */
+
+.form {
+    padding:0 2rem;
+}
+
+.form__title {
+    padding-bottom: 0.5rem;
+}

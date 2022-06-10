@@ -5,4 +5,5 @@ V 1.0 : Envoi de messages sur un site web.
 - tags d'identification dans les balises div
 
 V 2.0 :
-- Système de login
+- restitution des messages
+- interface améliorée.
