@@ -10,17 +10,27 @@
     <title>Index</title>
 </head>
 <body>
-    <header class="header container">
-        <h1 class="header__title fs-xl">Chat App</h1>
-        <p class="header__desc fs-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem cum odio quis cupiditate reprehenderit alias ipsam, doloremque impedit in voluptatibus nulla, commodi eum suscipit adipisci odit ducimus optio! Ullam, corporis.</p>
+    <header class="header">
+        <div class="header__inner container">
+            <h1 class="header__title fs-xl">Chat App</h1>
+            <p class="header__desc fs-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem cum odio quis cupiditate reprehenderit alias ipsam, doloremque impedit in voluptatibus nulla, commodi eum suscipit adipisci odit ducimus optio! Ullam, corporis.</p>
+    </div>
     </header>
     <section class="forum">
-        <form class="form container" action="/send" method="POST">
-            <h3 class="form__title fs-md">Ecrivez votre post</h3>
-            <input type="text" class="form__post-input fs-sm" name="text" required>
-            <button type="submit" class="form__submit-btn fs-sm">valider</button>
+        <form class="form" action="/send" method="POST">
+            <div class="form__inner container">
+                <h3 class="form__title fs-lg">Ecrivez votre post</h3>
+                <input type="text" class="form__post-input fs-sm" name="text" required>
+            </div>
         </form>
+        <div class="posts container">
+            <h2 class="posts__title fs-lg">Derniers posts</h2>
+            <div class="posts__post-preview">
+            </div>
+        </div>
     </section>
+    <script src="../js/displayer.js" type="text/javascript">
+    </script>
         <div class="input">
             <h3 class="input__title">Ecrivez votre post</h3>
             <form class="form" action="/send" method="post">

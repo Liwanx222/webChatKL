@@ -1,6 +1,6 @@
 module.exports = {
     updateDatabase
-};
+}
 
 function updateDatabase(data,post){
     let db = JSON.parse(data);
@@ -8,3 +8,8 @@ function updateDatabase(data,post){
     db = JSON.stringify(db);
     return db
 }
+
+function getMessages(data, number) {
+    let db = JSON.parse(data);
+    return db["messages"];
+};

@@ -12,7 +12,8 @@
 =============== */
 
 .header {
-    padding:4rem 2rem;
+    background-color: #7A306C;
+    color:white;
 }
 
 .header__desc {
@@ -20,13 +21,53 @@
     max-width:550px;
 }
 
+.header__inner {
+    padding:5rem 2rem;
+}
+
 /* Form
 =============== */
 
 .form {
-    padding:0 2rem;
+    background-color:rgba(0,0,0,0.05);
+}
+
+.form__inner {
+    padding:4rem 2rem; 
 }
 
 .form__title {
     padding-bottom: 0.5rem;
+}
+
+.form__post-input {
+    border:solid 2px black;
+    border-radius: 5px;
+}
+
+
+/* POsts 
+=============== */
+
+.posts {
+    padding:0 2rem;
+}
+
+.posts__post-preview {
+    display:grid;
+    align-items: space-between;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:1rem;
+}
+
+.posts__post-container {
+    padding:0 1rem 1rem 1rem; 
+}
+
+.posts__title {
+    text-align: center;
+}
+
+.posts__title {
+    padding:3rem 0;
 }
