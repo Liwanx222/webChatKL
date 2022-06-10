@@ -28,7 +28,6 @@ function displayMessage(parent, text) {
     message_elt.classList.add('posts__post-container');
     message_elt.textContent = text;
     parent.appendChild(message_elt);
-    console.log('display element');
 };
 
 function main(){
