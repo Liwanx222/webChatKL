@@ -21,12 +21,7 @@ app.use(body_parser.urlencoded({extended:false}));
 =============== */
 
 app.get("/", (req, res)=> {
-	res.render("index.ejs");
-	fs.readFile(db, 'utf-8', async(err, data) => {
-		let object_db = JSON.parse(data);
-	})
-	// FUCK.
-	mess_handler.displayMessages(object_db);
+	res.render("landing.ejs");
 });
 
 app.post('/send',(req,res)=>{
