@@ -20,7 +20,7 @@ app.use(body_parser.urlencoded({extended:false}));
 =============== */
 
 app.get("/", (req, res)=> {
-	res.render("index.ejs");
+	res.render("landing.ejs");
 });
 
 app.post('/send',(req,res)=>{
