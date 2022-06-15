@@ -9,6 +9,7 @@ let database = require('./js/database');
 
 /* Parsers 
 =============== */
+let mess_handler = require('./js/messagesHandler');
 
 const app = express();
 app.set('view engine', 'ejs'); 
