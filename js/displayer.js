@@ -3,18 +3,18 @@ function setupListeners(){
     let post_input = document.querySelector('.form__post-input');
     post_input.addEventListener('keypress',(e)=>{
         if(e.key=='enter'){
-            getMessages();
+            displayAllMessages();
         }
     })
 }
 
-function getMessages() {
+function displayAllMessages() {
     let parent = document.querySelector(".posts__post-preview");
     fetch("../json/database.json")
     .then(response => response.json())
     .then(response => {
         for(let msg in response["messages"]){
-            displayMessage(parent,response["messages"][msg]);
+            displayMessage(parent, response["messages"][msg]);
         }});
 };
 
@@ -31,7 +31,7 @@ function displayMessage(parent, text) {
 };
 
 function main(){
-    getMessages();
+    displayAllMessages();
 }
 main();
 

@@ -6,6 +6,9 @@ let express = require("express");
 let fs = require('fs');
 let body_parser = require('body-parser');
 let database = require('./js/database');
+let login_system = require("./js/loginSystem");
+
+const users_data_filepath = "./json/users.json";
 
 /* Parsers 
 =============== */
@@ -24,6 +27,10 @@ app.get("/", (req, res)=> {
 	res.render("landing.ejs");
 });
 
+app.get("/users", (req, res)=>{
+	res.json();
+});
+
 app.post('/send',(req,res)=>{
 	fs.readFile('./json/database.json',async(err,data)=>{
 		if (err){
@@ -35,5 +42,21 @@ app.post('/send',(req,res)=>{
 		res.redirect('/');
 	})
 });
+
+app.post("/signup", (req, res)=>{
+	fs.readFile(users_data_filepath, async(err, data)=>{
+		if(err){
+			throw err;
+		} else {
+			let username = req.body.username;
+			let userpassword = req.body.userpassword;
+			fs.writeFile(users_data_filepath, login_system.addUserToDatabase(data, username, userpassword), err=>{
+				if(err) throw err;
+			});
+		}
+		res.redirect("/");
+	});
+});
+
 
 app.listen(3000);
