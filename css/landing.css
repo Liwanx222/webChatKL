@@ -163,4 +163,12 @@ body {
 }
 
 .hero-signup__username-label , .hero-signup__password-label {
+    font-weight:900;
+}
+
+.hero-signup__username-input , .hero-signup__password-input {
+    background: none;
+    border:none;
+    outline: none;
+    color:white;
 }

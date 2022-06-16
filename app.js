@@ -6,6 +6,8 @@ let express = require("express");
 let fs = require('fs');
 let body_parser = require('body-parser');
 let database = require('./js/database');
+let login_system = require("./js/loginSystem");
+const users_data_filepath = "./json/users.json";
 
 /* Parsers 
 =============== */
@@ -33,6 +35,22 @@ app.post('/send',(req,res)=>{
 		})
 		res.redirect('/');
 	})
+});
+
+app.post("/signup", (req, res)=>{
+	console.log('here');
+	fs.readFile(users_data_filepath, async(err, data)=>{
+		if(err){
+			throw err;
+		} else {
+			let username = req.body.username;
+			let userpassword = req.body.userpassword;
+			fs.writeFile(users_data_filepath, login_system.addUserToDatabase(data, username, userpassword), err=>{
+				if(err) throw err;
+			});
+		}
+		res.redirect("/");
+	});
 });
 
 app.listen(3000);
