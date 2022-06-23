@@ -9,32 +9,15 @@ body {
     background: var(--light-gray);
 }
 
-/* Page Wrapper 
-=============== */
-
-.page-wrapper {
-    display:grid;
-    grid-template-columns: 1fr 1px 1fr 1px 1fr;
-    grid-row:1fr;
-    max-width:1260px;
-    margin:0 auto;
-}
-
-.grid-border:nth-child(1){
-    grid-column: 1/2;
-    grid-row:1;
-    background-color: red;
-}
-
-/* HEADER
+/* || HEADER
 =============== */
 
 .header {
-    display: flex;
     min-height: 15vh;
-    padding:0 2rem;
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    padding:0 2rem;
 }
 
 .header__nav-element {
@@ -47,23 +30,22 @@ body {
     .header-nav-list {display:none;}
 }
 
-/* HERO 
+/* || HERO 
 =============== */
 
 .hero {
-    padding:0rem 2rem 1rem 2rem;
     min-height:85vh;
     display:flex;
     justify-content: space-between;
+    padding:0rem 2rem 1rem 2rem;
 }
 
 .hero-content {
-    /*height:100%;*/
-    background:var(--gray);
-    color:white;
-    border-radius: 5px;
-    padding:2rem;
     width:38%;
+    padding:2rem;
+    border-radius: 5px;
+    background:var(--gray);
+    color:#FFF;
 }
 
 .hero-showcase {
@@ -71,28 +53,14 @@ body {
 }
 
 .hero-features {
-    color:white;
+    height:fit-content;
     display:grid;
-    padding:1rem;
     grid-template-columns: 1fr;
     grid-gap:1rem;
-    height:fit-content;
+    padding:1rem;
     border-radius: 5px;
     background:#6C63FF;
-}
-
-.hero__img {
-    width:300px;
-}
-
-.hero__cta-btn {
-    display:block;
-    background:rgba(255,255,255,0.2);
-    backdrop-filter: blur(8px);
-    outline:none;
-    margin-top:0.5rem;
-    padding:0.2rem .5rem;
-    border:solid rgba(0,0,0,0.05) 2px;
+    color:#FFF;
 }
 
 .hero-feature-container {
@@ -101,74 +69,67 @@ body {
 }
 
 .hero-form {
-    margin-top:1rem;
     display:flex;
     gap:1rem;
+    margin-top:1rem;
 }
 
 .hero-form__signup-btn , .hero-form__login-btn {
     width:50%;
+    padding:1rem;
     outline: none;
     border:none;
     border-radius: 5px;
     font-weight: 900;
-    padding:1rem;
-    /*border:solid 2px var(--gray);*/
     background-color: var(--light-gray);
     border:solid 2px var(--gray);
     color:var(--gray);
 }
 
 @media screen and (max-width:768px){
-    .hero {
-        display: block;
-    }
-    .hero-content , .hero-showcase {
-        width:100%;
-    }
-    .hero-showcase , .hero-form {
-        margin-top:2rem;
-    }
+    .hero {display: block;}
+    .hero-content , .hero-showcase {width:100%;}
+    .hero-showcase , .hero-form {margin-top:2rem;}
 }
 
 @media screen and (max-width:576px){
     .hero {
+        width:90%;
         padding-left: 0;
         padding-right: 0;
-        width:90%;
     }
-    .hero-content , .hero-features {
-        padding:2rem 1rem;
-    }
-    .hero-features {
-        grid-gap:2rem;
-    }
-    .hero-showcase , .hero-feature-container {
-        padding:0;
-    }
-    .hero-feature-container__title {
-        padding-bottom: 0.25rem;
-    }
+    .hero-content , .hero-features {padding:2rem 1rem;}
+    .hero-features {grid-gap:2rem;}
+    .hero-showcase , .hero-feature-container {padding:0;}
+    .hero-feature-container__title {padding-bottom: 0.25rem;}
 }
 
-/* Authentification
+/* || Authentification
 =============== */
 
 .hero-signup {
-    color:white;
     height:fit-content;
-    border-radius: 5px;
-    background:#6C63FF;
     padding:1rem;
+    border-radius: 5px;
+    color:white;
+    background:#6C63FF;
 }
 
-.hero-signup__username-label , .hero-signup__password-label {
+.hero-signup__username-label , .hero-signup__pwd-label {
+    display:none;
     font-weight:900;
 }
 
-.hero-signup__username-input , .hero-signup__password-input {
-    background: none;
+.hero-signup__username-input , .hero-signup__pwd-input {
+    display:none;
+    margin-top:0.5rem;
     border:none;
+    border-bottom:solid white 2px;
     outline: none;
+    background: none;
     color:white;
+}
+
+.hero-signup__arrow {
+    margin-left:0.5rem;
 }

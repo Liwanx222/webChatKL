@@ -3,10 +3,9 @@
 =============== */
 
 let express = require("express");
+let bcrypt = require('bcrypt');
 let fs = require('fs');
 let body_parser = require('body-parser');
-let database = require('./js/database');
-let login_system = require("./js/loginSystem");
 const users_data_filepath = "./json/users.json";
 
 /* Parsers 
@@ -44,12 +43,37 @@ app.post("/signup", (req, res)=>{
 			throw err;
 		} else {
 			let username = req.body.username;
-			let userpassword = req.body.userpassword;
-			fs.writeFile(users_data_filepath, login_system.addUserToDatabase(data, username, userpassword), err=>{
-				if(err) throw err;
-			});
+			let password = req.body.password;
+
+			let isUserExisting = JSON.parse(data).find(user=>{
+				return user.username == req.body.username;
+			})
+			if (isUserExisting){res.redirect('/')}
+			if(username !=undefined && password != undefined && username != null && password != null){
+				const salt = bcrypt.genSaltSync(10);
+				const hashed_password = bcrypt.hashSync(password, salt);
+
+				let new_user =
+				{
+					'username':username,
+					'password':hashed_password,
+					'data':{'messages':['hey']}
+				}
+
+				let db = JSON.parse(data);
+				console.log(db);
+				db.push(new_user);
+				console.log(db);
+				db = JSON.stringify(db,null,'\t');
+
+				console.log(db)
+
+				fs.writeFile(users_data_filepath, db ,'utf-8', err=>{
+					if(err) throw err;
+					res.redirect("/");	
+				});		
+			}	
 		}
-		res.redirect("/");
 	});
 });
 
